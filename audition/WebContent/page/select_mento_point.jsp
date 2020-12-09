@@ -9,7 +9,7 @@
 		    "POINT.SERIAL_NO, " +
 		    "ARTIST.ARTIST_ID, " +
 		    "ARTIST.ARTIST_NAME, " + 
-		    "ARTIST.ARTIST_BIRTH, " +
+		    "TO_DATE(ARTIST.ARTIST_BIRTH, 'YYYY/MM/DD'), " +
 		    "POINT.POINT, " +
 		    "MENTO.MENTO_NAME " + 
 		"FROM " + 
@@ -53,7 +53,11 @@
 					<td><%=rs_mento.getInt(1) %></td>
 					<td><%=rs_mento.getString(2) %></td>
 					<td><%=rs_mento.getString(3) %></td>
-					<td><%=rs_mento.getString(4) %></td>
+					<td>
+						<%=rs_mento.getString(4).substring(0, 4) + "년"
+				 		 + rs_mento.getString(4).substring(5, 7) + "월"
+				 		 + rs_mento.getString(4).substring(8, 10) + "일" %>
+					</td>
 					<td><%=rs_mento.getInt(5) %></td>
 					<td><%
 						if(rs_mento.getInt(5) >= 90) { %> <%="A"%> <% }
