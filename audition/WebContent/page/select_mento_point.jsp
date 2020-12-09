@@ -26,55 +26,45 @@
 		ResultSet rs_mento = DB.fetch(mento_query);
 %>
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<table border=1>
-		<thead>
+<table border=1>
+	<thead>
+		<tr>
+			<td>채점번호</td>
+			<td>참가번호</td>
+			<td>참가자명</td>
+			<td>생년월일</td>
+			<td>점수</td>
+			<td>평점</td>
+			<td>멘토</td>
+		</tr>
+	</thead>
+	<tbody>
+		<%
+			while(rs_mento.next()) {
+		%>
 			<tr>
-				<td>채점번호</td>
-				<td>참가번호</td>
-				<td>참가자명</td>
-				<td>생년월일</td>
-				<td>점수</td>
-				<td>평점</td>
-				<td>멘토</td>
+				<td><%=rs_mento.getInt(1) %></td>
+				<td><%=rs_mento.getString(2) %></td>
+				<td><%=rs_mento.getString(3) %></td>
+				<td>
+					<%=rs_mento.getString(4).substring(0, 4) + "년"
+			 		 + rs_mento.getString(4).substring(5, 7) + "월"
+			 		 + rs_mento.getString(4).substring(8, 10) + "일" %>
+				</td>
+				<td><%=rs_mento.getInt(5) %></td>
+				<td><%
+					if(rs_mento.getInt(5) >= 90) { %> <%="A"%> <% }
+					else if(rs_mento.getInt(5) >= 80) {%> <%="B"%> <%}
+					else if(rs_mento.getInt(5) >= 70) {%> <%="C"%> <% }
+					else if(rs_mento.getInt(5) >= 60) {%> <%="D"%> <% }
+					else if(rs_mento.getInt(5) < 60) {%> <%= "F" %><%};
+				%></td>
+				<td><%=rs_mento.getString(6) %></td>
 			</tr>
-		</thead>
-		<tbody>
-			<%
-				while(rs_mento.next()) {
-			%>
-				<tr>
-					<td><%=rs_mento.getInt(1) %></td>
-					<td><%=rs_mento.getString(2) %></td>
-					<td><%=rs_mento.getString(3) %></td>
-					<td>
-						<%=rs_mento.getString(4).substring(0, 4) + "년"
-				 		 + rs_mento.getString(4).substring(5, 7) + "월"
-				 		 + rs_mento.getString(4).substring(8, 10) + "일" %>
-					</td>
-					<td><%=rs_mento.getInt(5) %></td>
-					<td><%
-						if(rs_mento.getInt(5) >= 90) { %> <%="A"%> <% }
-						else if(rs_mento.getInt(5) >= 80) {%> <%="B"%> <%}
-						else if(rs_mento.getInt(5) >= 70) {%> <%="C"%> <% }
-						else if(rs_mento.getInt(5) >= 60) {%> <%="D"%> <% }
-						else if(rs_mento.getInt(5) < 60) {%> <%= "F" %><%};
-					%></td>
-					<td><%=rs_mento.getString(6) %></td>
-				</tr>
-			<%
-				};
-				
-			rs_mento.close();			
-		}catch(JasperException ignored) {};
-			%>
-		</tbody>
-	</table>
-</body>
-</html>
+		<%
+			};	
+		rs_mento.close();			
+	}catch(JasperException ignored) {};
+		%>
+	</tbody>
+</table>

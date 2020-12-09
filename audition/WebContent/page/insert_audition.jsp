@@ -51,6 +51,7 @@
 			</tr>
 		</table>
 	</form>
+
 <script>
 	function resetForm() {
 		document.forms[0].reset();

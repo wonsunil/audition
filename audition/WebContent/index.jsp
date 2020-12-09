@@ -16,8 +16,11 @@
 	<%@ include file="static/header.jsp" %>
 	<%@ include file="static/nav.jsp" %>
 	
-	<%
+	<section>
+		<%
 		switch(section) {
+			case "insert" : %> <%@ include file="page/insert_audition.jsp" %> <%
+			break;
 			case "select_participant" : %>
 				<%@ include file="page/select_participant.jsp" %> <%
 			break;
@@ -30,8 +33,12 @@
 			
 			default: %> <%@ include file="static/index.jsp" %> <%
 		};
-	%>
+		%>
+	</section>
 		
 	<%@ include file="static/footer.jsp" %>	
 </body>
+<script>
+	document.querySelector("body > a").setAttribute("href", "#void");
+</script>
 </html>
