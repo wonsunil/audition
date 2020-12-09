@@ -5,7 +5,7 @@
 <%@ page import="audition.DB" %>  
     
 <%
-	String query = "SELECT " +
+	String mento_query = "SELECT " +
 		    "POINT.SERIAL_NO, " +
 		    "ARTIST.ARTIST_ID, " +
 		    "ARTIST.ARTIST_NAME, " + 
@@ -23,7 +23,7 @@
 		    "SERIAL_NO";
 
 	try{
-		ResultSet rs_mento = DB.fetch(query);
+		ResultSet rs_mento = DB.fetch(mento_query);
 %>
     
 <!DOCTYPE html>
