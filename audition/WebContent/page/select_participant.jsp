@@ -23,14 +23,19 @@
 		</thead>
 		<tbody>
 	<%	
-		ResultSet rs = DB.fetch("SELECT * FROM TBL_ARTIST_201905");
+		String participant_query = "SELECT ARTIST_ID, ARTIST_NAME, TO_DATE(ARTIST_BIRTH, 'YYYY/MM/DD'), ARTIST_GENDER, TALENT, AGENCY FROM TBL_ARTIST_201905";
+		ResultSet rs = DB.fetch(participant_query);
 	
 		while(rs.next()) {
 	%>
 		<tr>
 			<td><%=rs.getString(1) %></td>
 			<td><%=rs.getString(2) %></td>
-			<td><%=rs.getString(3) %></td>
+			<td>
+				<%=rs.getString(3).substring(0, 4) + "년"
+				 + rs.getString(3).substring(5, 7) + "월"
+				 + rs.getString(3).substring(8, 10) + "일" %>
+			</td>
 			<td><%=rs.getString(4).equals("F") ? "여자" : "남자" %></td>
 			<td>
 				<%
