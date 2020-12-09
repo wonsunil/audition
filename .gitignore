@@ -1,0 +1,12 @@
+.metadata
+.MF
+*.MF
+*.jar
+*.name
+*.container
+*.prefs
+*.component
+*.xml
+audition/.settings/.jsdtscope
+audition/.project
+audition/.classpath
