@@ -51,3 +51,56 @@
 			</tr>
 		</table>
 	</form>
+<script>
+	function resetForm() {
+		document.forms[0].reset();
+		document.forms[0].artist_id.focus();
+		
+		return alert("정보를 지우고 처음부터 다시 입력합니다!");
+	};
+	document.forms[0].addEventListener("submit", event => {
+		return event.preventDefault();
+	});
+
+	document.querySelectorAll("button")[0].addEventListener("click", event => {
+		if(document.forms[0].artist_id.value === "") {
+			alert("참가번호칸이 입력되지 않았습니다!");
+			
+			return document.forms[0].artist_id.focus();
+		};
+		if(document.forms[0].artist_name.value === "") {
+			alert("참가자명이 입력되지 않았습니다!");
+			
+			return document.forms[0].artist_name.focus();
+		};
+		if(document.forms[0].year.value === "") {
+			alert("년도가 입력되지 않았습니다!");
+			
+			return document.forms[0].year.focus();
+		};
+		if(document.forms[0].month.value === "") {
+			alert("월이 입력되지 않았습니다!");
+			
+			return document.forms[0].month.focus();
+		};
+		if(document.forms[0].day.value === "") {
+			alert("일이 입력되지 않았습니다!");
+			
+			return document.forms[0].day.focus();
+		};
+		if(document.forms[0].gender.value === "") {
+			return alert("성별이 선택되지 않았습니다!");
+		};
+		if(document.forms[0].talent.selectedIndex === 0) {
+			return alert("특기가 선택되지 않았습니다");
+		};
+		if(document.forms[0].agency.value === "") {
+			alert("소속사가 입력되지 않았습니다!");
+			
+			return document.forms[0].agency.focus();
+		};
+		
+		alert("참가신청이 완료되었습니다");
+		return document.forms[0].submit();
+	});
+</script>
